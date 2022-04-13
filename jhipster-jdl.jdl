@@ -1,0 +1,40 @@
+
+entity Facility {
+	name String,
+    facilityId Long
+}
+
+entity Room {
+	roomId Long,
+    roomNumber Long
+}
+
+
+entity Resident {
+	residentId Long
+	firstName String,
+	lastName String,
+	email String,
+	phoneNumber String
+}
+
+relationship OneToMany {
+	Facility to Room{facility},
+	/**
+	* A relationship
+	*/
+	Room to Resident{room}
+}
+
+// Set pagination options
+paginate Facility, Room with infinite-scroll
+paginate Resident with pagination
+
+// Use Data Transfer Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+
+// Set an angular suffix
+// angularSuffix * with mySuffix
